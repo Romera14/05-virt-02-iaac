@@ -31,7 +31,18 @@ MacAir@MacBook-Air-User ~ % terraform -v
 Terraform v1.4.6
 on darwin_amd64
 ```
-
+```
+MacAir@MacBook-Air-User ~ % ansible --version
+ansible [core 2.14.5]
+  config file = None
+  configured module search path = ['/Users/MacAir/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.11/site-packages/ansible
+  ansible collection location = /Users/MacAir/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/local/bin/ansible
+  python version = 3.11.3 (main, May 17 2023, 16:49:17) [Clang 12.0.0 (clang-1200.0.32.29)] (/usr/local/opt/python@3.11/bin/python3.11)
+  jinja version = 3.1.2
+  libyaml = True
+  ```
 ## Задача 4
 
 ### Воспроизведите практическую часть лекции самостоятельно.
