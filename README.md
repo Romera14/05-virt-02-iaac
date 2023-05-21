@@ -60,3 +60,33 @@ Error: The requested URL returned error: 404:
 
 Скачайте с сайта файл-образ "bento/ubuntu-20.04".
 Добавьте его в список образов Vagrant: "vagrant box add bento/ubuntu-20.04 <путь к файлу>".
+
+столкнулся с проблемой с vagrant и ansible:
+```
+ansible-playbook: error: unrecognized arguments: --sudo
+...
+
+Vagrant gathered an unknown Ansible version:
+
+
+and falls back on the compatibility mode '1.8'.
+```
+решил удалением строчки ```setup.become = true``` из блока
+```
+      node.vm.provision "ansible" do |setup|
+        setup.inventory_path = INVENTORY_PATH
+        setup.playbook = "/Users/MacAir/playbook.yml"
+        setup.become = true
+        setup.extra_vars = { ansible_user: 'vagrant' }
+```
+после это ругался на ключи
+```
+TASK [Adding rsa-key in /root/.ssh/authorized_keys] ****************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+fatal: [server1.netology]: FAILED! => {"changed": false, "msg": "Could not find or access '~/.ssh/id_rsa.pub' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+...ignoring
+```
+но видимо проигнорировал и все установилось
+![](https://github.com/Romera14/05-virt-02-iaac/blob/main/Снимок%20экрана%202023-05-21%20в%2015.16.48.png)
+
+
